@@ -7,7 +7,7 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
     <ClerkProviderWrapper>
-      <BrowserRouter>
+      <BrowserRouter> 
         <QueryClientProvider client={queryClient}>
           <App />
         </QueryClientProvider>  

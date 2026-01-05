@@ -7,10 +7,10 @@ export const useSessionSocket = () => {
 
     useEffect( () => {
         if(!isLoaded || !isSignedIn) return;
-        let socket;
-
+        
         const init = async () => {
             const token = await getToken();
+
             const socket = connectSocket(token);
 
             socket.on('connect', () => {

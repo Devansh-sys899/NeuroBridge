@@ -7,7 +7,6 @@ export const useSessionResync = () => {
 
     useEffect(() => {
 
-        console.log('Session resynced Triggered');
         const socket = getSocket();
         if(!socket) return;
 
