@@ -3,8 +3,8 @@ const Metrics = require('../Models/metricsModel');
 
 const getMetrics = async (req,res) => {
     try {
-        const userId = req.auth.userId;
-        const metrics = await Metrics.findOne(userId);
+        const userId = req.auth?.userId;
+        const metrics = await Metrics.findOne({ userId });
         
         if(!metrics) {
             return res.status(404).json({

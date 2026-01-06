@@ -1,8 +1,9 @@
 import { io } from 'socket.io-client';
 
-let socket = null;
+let socket = null
 
 export const connectSocket = (token) => {
+
     if(socket) return socket;
 
     socket = io(import.meta.env.VITE_SOCKET_URL, {
@@ -10,7 +11,7 @@ export const connectSocket = (token) => {
         withCredentials: true,
         transports: ['websocket']
     });
-
+    
     return socket;
 };
 
@@ -22,16 +23,22 @@ export const disconnectSocket = () => {
 }
 
 export const requestSessionResync = (sessionId) => {
-    if(!socket) return;
+    console.log('session resync request triggered from hook');
     socket.emit('SESSION_RESYNC', { sessionId });
 }
 
 export const onSessionResynced = (callback) => {
     if(!socket) return;
+    const handler = (session) => {
+        socket.on("SESSION_RESYNCED", callback(session));
 
-    socket.off("SESSION_RESYNCED");
-    socket.on('SESSION_RESYNCED', callback);
+        return () => {
+            socket.off('SESSION_RESYNCED', handler);
+        }
+    }
 }
 
 
-export const getSocket = () => socket;
+export const getSocket = () => {
+    return socket;
+};

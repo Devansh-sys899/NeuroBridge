@@ -2,7 +2,10 @@ import axios from "axios";
 import { api } from "./Api";
 
 export const fetchMetrics = async () => {
-    const res = await api.get('/metrics/');
+    console.log('Fetching Metrics data...');
+    const res = await api.get('/api/metrics/', {
+        withCredentials: true
+    });
     return res.data;
 } 
 

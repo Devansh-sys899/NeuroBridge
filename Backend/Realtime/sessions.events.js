@@ -1,6 +1,5 @@
 const Session = require('../Models/sessionModel');
 const { socketAuth } = require('./socket.auth');
-const { getSessionById } = require('../Controllers/sessionController');
 
 
 const setupSocket = (io) => {
@@ -23,7 +22,7 @@ const setupSocket = (io) => {
             }    
 
             const now = Date.now();
-            const last =  session.lastHeartbeat.getTime() ?? now;
+            const last =  session.lastHeartbeat ? session.lastHeartbeat.getTime() : now; 
 
             if(now - last > interruptionThreshold) {
                 session.interruptions += 1;
@@ -42,6 +41,9 @@ const setupSocket = (io) => {
                 status: { $in: ['Active', 'Inactive'] }
             });
 
+            console.log('UserId:', socket.data.userId);
+
+            console.log('Session:', session);
             if(!session) return;
 
             socket.join(session._id);
@@ -53,7 +55,7 @@ const setupSocket = (io) => {
             await session.save();
 
             socket.emit('SESSION_RESYNCED', session);
-            console.log('Session Resynced:', session_id);
+            console.log('Session Resynced:', session._id);
         }) 
         socket.on('disconnect', async() => {
             const sessionId = socket.data.sessionId;

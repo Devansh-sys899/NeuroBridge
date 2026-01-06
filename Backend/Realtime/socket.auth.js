@@ -9,7 +9,7 @@ const socketAuth = async (socket, next) => {
         }
 
         const payload = await verifyToken(token, { secretKey: process.env.CLERK_SECRET_KEY });
-        socket.userId = payload.sub;
+        socket.data.userId = payload.sub;
         
         console.log('Socket userId:', payload.sub);
 
