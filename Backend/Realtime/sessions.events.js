@@ -41,9 +41,6 @@ const setupSocket = (io) => {
                 status: { $in: ['Active', 'Inactive'] }
             });
 
-            console.log('UserId:', socket.data.userId);
-
-            console.log('Session:', session);
             if(!session) return;
 
             socket.join(session._id);
