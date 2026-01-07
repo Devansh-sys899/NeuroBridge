@@ -1,40 +1,30 @@
-import { useSessionSocket } from './Hooks/useSessionSocket';
-import { useSessionFlow } from './Hooks/useSessionFlow';
-import { useHeartbeat } from './Hooks/useHeartbeat';
-import { useSessionResync } from './Hooks/useSessionResync';
-import { attachAuthInterceptor } from './Services/Api';
+import { useEffect } from "react";
 import { useAuth } from '@clerk/clerk-react';
-import { useEffect } from 'react';
+import { attachAuthInterceptor } from './Services/Api';
+import { Routes, Route } from 'react-router-dom';
+import AppLayout from './Layout/AppLayout';
+import Dashboard from "./Pages/Dashboard";
+import Session from "./Pages/Session";
+import Analytics from "./Pages/Analytics";
 
 const App = () => {
-
-  const { getToken, isSignedIn } = useAuth();
+  const { getToken } = useAuth();
 
   useEffect(() => {
-    if(!isSignedIn) return;
-
     attachAuthInterceptor(getToken);
-  }, [isSignedIn, getToken]);
-  
-  const { startSession } = useSessionFlow();
-  useSessionSocket();
-  useHeartbeat();
-  useSessionResync();
+  }, [getToken]);
 
   return (
     <div>
-      <button
-        onClick={() => {
-          startSession({
-            topic: 'Kafka integration',
-            difficulty: 3,
-            intent: 'Learning'
-          })
-        }}
-      >
-        Start Session
-      </button>
+      <AppLayout>
+        <Routes>
+          <Route path='/dashboard' element={<Dashboard />}/>
+          <Route path='/session' element={<Session />}/>
+          <Route path='/analytics' element={<Analytics />}/>
+        </Routes>
+      </AppLayout>
     </div>
+
   )
 }
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'https://orange-potato-v677rpp4vqr3xjj5-8000.app.github.dev',
+  baseURL: import.meta.env.VITE_SOCKET_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -13,9 +13,8 @@ export const attachAuthInterceptor = (getToken) => {
       const token = await getToken();
 
       if (token) {
-        config.headers.Authorization = `Bearer ${token}`; // ✅ CORRECT
+        config.headers.Authorization = `Bearer ${token}`; 
       }
-
       return config;
     },
     (error) => Promise.reject(error)

@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { joinSessionRoom, sendHeartbeat, forceEndSession } from '../Sockets/Socket.session';
+import { joinSessionRoom, sendHeartbeat } from '../Sockets/Socket.session';
 
 export const useSessionStore = create((set, get) => ({
     activeSessionId: null,
@@ -7,10 +7,10 @@ export const useSessionStore = create((set, get) => ({
     elapsedTime: 0,
     interruptions: 0,
     isRunning: false,
+    socket: null,
 
     startSession: (sessionId) => {
-        localStorage.setItem('activeSessionId:', sessionId);
-
+        localStorage.setItem('activeSessionId', sessionId);
         set({
         activeSessionId: sessionId,
         startTime: Date.now(),
@@ -19,10 +19,11 @@ export const useSessionStore = create((set, get) => ({
         isRunning: true,
     })
         joinSessionRoom(sessionId);
-        console.log('Start Session from Zustand');
+        console.log('Start Session from Zustand with session Id:', sessionId);
     },
 
     restoreSessoin: (session) => {
+        console.log('Restore session trigerred with session:', session);
         set({
             activeSessionId: session._id,
             isRunning: session.status === 'Active',

@@ -40,8 +40,6 @@ const endSessionController = async (req, res) => {
     const { selfReportedFocus } = req.body;
     const userId = req.auth?.userId;
 
-    console.log('Session Id :', sessionId);
-    console.log('Payload:', req.body);
     if (!sessionId || !selfReportedFocus) {
         return res.status(400).json({ success: false, message: 'Missing required session end data (userId, sessionId, or selfReportedFocus).' });
     }

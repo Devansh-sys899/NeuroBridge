@@ -4,7 +4,6 @@ require('dotenv').config();
 const clerkAuthMiddleware = async (req,res,next) => {
     try {
 
-        console.log("request method:", req.method);
         if(req.method === "OPTIONS") {
             return next();
         }
@@ -17,7 +16,6 @@ const clerkAuthMiddleware = async (req,res,next) => {
             });
         }
 
-        
         const token = authHeader.split(" ")[1];
         const payload = await verifyToken(token, { secretKey: process.env.CLERK_SECRET_KEY });
         console.log('UserId:', payload.sub);
