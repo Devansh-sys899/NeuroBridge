@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSessionStore } from '../Store/Session.store';
 import { useSessionFlow } from '../Hooks/useSessionFlow';
+import EndSessionModal from "./EndSessionModal";
 
 const SessionCard = () => {
     const isRunning = useSessionStore(s => s.isRunning);
@@ -9,6 +10,7 @@ const SessionCard = () => {
     const { startSession, endSession } = useSessionFlow();
 
     const [elapsed, setElapsed] = useState(0);
+    const [showEndModal, setShowEndModal] = useState(false);
 
     useEffect(() => {
         if(!isRunning || !startTime) return;
@@ -56,15 +58,31 @@ const SessionCard = () => {
             </div>
 
             <button 
-            onClick={() => isRunning ? endSession({ selfReportedFocus: 3 }) : startSession({
-                topic: 'Kafka Integration',
-                difficulty: 4,
-                intent: 'Learning'
-            })}
+            onClick={() => {
+                if(isRunning) {
+                    setShowEndModal(true)
+                } else {
+                    startSession({
+                        topic: "Deep work",
+                        difficulty: 3,
+                        intent: 'Revise'
+                    })
+                };
+            }}
             className={`w-full py-2 rounded-xl font-medium transition ${ isRunning ? 'bg-red-600 hover:bg-red-500' : 'bg-indigo-600 hover:bg-indigo-500'}`}>
                 {isRunning ? 'End Session' : 'Start Session'}
             </button>
+
+            <EndSessionModal 
+            open={showEndModal}
+            onClose={() => setShowEndModal(false)}
+            onConfirm={(focus) => {
+                endSession({ selfReportedFocus: focus });
+                setShowEndModal(false);
+            }}
+            />
         </div>
+
     )
 }
 
