@@ -19,13 +19,6 @@ const AppLayout = ({ children }) => {
                 </main>
             </div>
 
-            <Routes>
-                <Route path='/dashboard' element={<Dashboard />}/>
-                <Route path='/session' element={<Session />}/>
-                <Route path='/analytics' element={<Analytics />}/>
-                <Route path='/sign-in' element={<SignInPage />}/>
-                <Route path='/sign-up' element={<SignUpPage />}/>
-            </Routes>
         </div>
     )
 }

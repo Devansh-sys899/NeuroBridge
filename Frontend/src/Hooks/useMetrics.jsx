@@ -6,7 +6,8 @@ export const useMetrics = () => {
         queryKey: ['metrics'],
         queryFn: fetchMetrics,
         staleTime: 5 * 60 * 1000,
-        refetchOnWindowFocus: false
+        refetchOnWindowFocus: false,
+        refetchOnMount: true
     })
 }
 
