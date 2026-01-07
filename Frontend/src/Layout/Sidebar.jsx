@@ -7,7 +7,7 @@ const Sidebar = () => {
     }`;
 
     return (
-        <aside className='w-60 bg-gray-900 border-r border-gray-800 p-4'>
+        <aside className='w-60 bg-gray-900 border-r border-gray-800 p-4 text-white font-semibold'>
             <nav className="space-y-2">
                 <NavLink to='/dashboard' className={linkClasses}>
                     Dashboard

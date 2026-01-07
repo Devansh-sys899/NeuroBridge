@@ -8,7 +8,7 @@ const Navbar = () => {
                 NeuroBridge
             </h1>
             <div className="ml-auto">
-                <div className="w-8 h-8 rounded-full bg-gray-700">
+                <div className=" flex justify-center items-center w-8 h-8 rounded-full bg-gray-700">
                     <UserAvatar />
                 </div>
             </div>
