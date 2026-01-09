@@ -27,14 +27,14 @@ const Session = () => {
     };
 
     return (
-        <div className='flex items-center justify-center min-h-screen bg-gray-900 p-4'>
-            <div className="w-full max-w-md bg-gray-800 rounded-xl p-6 space-y-6 shadow-md">
-                <h1 className="text-2xl font-bold text-white text-center">
+        <div className='flex mt-2 justify-center min-h-[80vh] bg-surface p-4'>
+            <div className="w-full max-w-md bg-surface border-border rounded-xl p-6 space-y-6 shadow-md">
+                <h1 className="text-2xl font-bold text-textMain text-center">
                     Start Focus Session
                 </h1>
 
                 <div className="flex flex-col space-y-1">
-                    <label className='text-sm text-gray-300'>
+                    <label className='text-sm text-Muted'>
                         What are you working on?
                     </label>
                     <input 
@@ -46,7 +46,7 @@ const Session = () => {
                 </div>
 
                 <div className="flex flex-col space-y-1">
-                    <label className="text-sm text-gray-300">
+                    <label className="text-sm text-textMuted">
                         Intent
                     </label>
                     <select
@@ -61,7 +61,7 @@ const Session = () => {
                 </div>
 
                 <div className="flex flex-col space-y-1">
-                    <label className='text-sm text-gray-300'>
+                    <label className='text-sm text-textMuted'>
                         Difficulty
                     </label>
                     <input 
