@@ -6,12 +6,12 @@ const EndSessionModal = ({ open, onClose, onConfirm }) => {
     if(!open) return null;
 
     return (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-            <div className="bg-gray-900 border border-gray-800 rounded-xl p-6 w-full max-w-md">
+        <div className="fixed inset-0 bg-surface flex items-center justify-center z-50">
+            <div className="bg-surface border border-border rounded-xl p-6 w-full max-w-md">
                 <h2 className="text-xl font-semibold mb-4">
                     End Focus Session?
                 </h2>
-                <p className="text-sm text-gray-400 mb-4">
+                <p className="text-sm text-textMuted mb-4">
                     How focused were you during this session?
                 </p>
 

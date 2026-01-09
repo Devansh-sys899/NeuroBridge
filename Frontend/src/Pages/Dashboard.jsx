@@ -8,6 +8,7 @@ const Dashboard = () => {
         <div className="flex flex-col justify-center gap-10 ml-[20%]">
             <QuickStats />
             <SessionCard />
+            <EndSessionModal />
         </div>
     )
 }

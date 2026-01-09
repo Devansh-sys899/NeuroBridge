@@ -13,7 +13,7 @@ const QuickStats = () => {
                 {[...Array(4)].map((_, i) => (
                     <div 
                     key={i} 
-                    className="h-24 bg-zinc-900/50 rounded-xl animate-pulse"></div>
+                    className="h-24 bg-surface rounded-xl animate-pulse"></div>
                 ))}
             </div>
         )

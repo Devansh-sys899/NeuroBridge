@@ -23,9 +23,9 @@ const SessionCard = () => {
     }, [isRunning, startTime]);
 
     return (
-        <div className="max-w-xl w-full bg-zinc-900 border border-zinc-800 rounded-2xl p-6 space-y-6">
+        <div className="max-w-xl w-full bg-surface border border-border rounded-2xl p-6 space-y-6">
             <div className="flex items-center justify-between">
-                <h2 className="text-lg font-medium text-white">
+                <h2 className="text-lg font-medium text-textMain">
                     Focus Session
                 </h2>
 
@@ -41,16 +41,16 @@ const SessionCard = () => {
                             {Math.floor(elapsed / 60)} : {String(elapsed % 60).padStart(2, "0")}
                         </div>
 
-                        <p className="text-sm text-zinc-400">
+                        <p className="text-sm text-textMuted">
                             Stay focused. You're doing deep work.
                         </p>
                     </> 
                     ) : (
                     <>
-                        <p className="text-zinc-400 text-sm">
+                        <p className="text-textMuted text-sm">
                             No active session
                         </p>
-                        <p className="text-zinc-500 text-xs">
+                        <p className="text-textMuted text-xs">
                             Start a session when you're ready to focus
                         </p>
                     </>
