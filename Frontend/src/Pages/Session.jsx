@@ -27,8 +27,8 @@ const Session = () => {
     };
 
     return (
-        <div className='flex mt-2 justify-center min-h-[80vh] bg-surface p-4'>
-            <div className="w-full max-w-md bg-surface border-border rounded-xl p-6 space-y-6 shadow-md">
+        <div className='flex mt-2 justify-center min-h-[80vh] p-4'>
+            <div className="w-full max-w-md border-border rounded-xl p-6 space-y-6 shadow-md">
                 <h1 className="text-2xl font-bold text-textMain text-center">
                     Start Focus Session
                 </h1>
