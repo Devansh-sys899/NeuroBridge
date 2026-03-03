@@ -19,6 +19,7 @@ const App = () => {
     <div>
       <AppLayout>
         <Routes>
+          <Route path='/' element={<SignInPage />} />
           <Route path='/dashboard' element={<Dashboard />}/>
           <Route path='/session' element={<Session />}/>
           <Route path='/analytics' element={<Analytics />}/>
