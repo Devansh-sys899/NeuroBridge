@@ -11,7 +11,7 @@ require('dotenv').config();
 
 const app = express();
 app.use(cors({
-    origin: "https://neuro-bridge-git-main-dishanahar791-7222s-projects.vercel.app",
+    origin: ["https://neuro-bridge-git-main-dishanahar791-7222s-projects.vercel.app", "https://neuro-bridge-ten.vercel.app/"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true
